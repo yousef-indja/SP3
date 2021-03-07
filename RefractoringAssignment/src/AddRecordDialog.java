@@ -126,47 +126,55 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 		boolean valid = true;
 		// if any of inputs are in wrong format, colour text field and display message
 		if (ppsField.getText().equals("")) {
-			ppsField.setBackground(new Color(255, 150, 150));
+			setRedBackgroundText(ppsField);
 			valid = false;
 		}// end if
 		if (this.parent.correctPps(this.ppsField.getText().trim(), -1)) {
-			ppsField.setBackground(new Color(255, 150, 150));
+			setRedBackgroundText(ppsField);
 			valid = false;
 		}// end if
 		if (surnameField.getText().isEmpty()) {
-			surnameField.setBackground(new Color(255, 150, 150));
+			setRedBackgroundText(surnameField);
 			valid = false;
 		}// end if
 		if (firstNameField.getText().isEmpty()) {
-			firstNameField.setBackground(new Color(255, 150, 150));
+			setRedBackgroundText(firstNameField);
 			valid = false;
 		}// end if
 		if (genderCombo.getSelectedIndex() == 0) {
-			genderCombo.setBackground(new Color(255, 150, 150));
+			setRedBackgroundCombo(genderCombo);
 			valid = false;
 		}// end if
 		if (departmentCombo.getSelectedIndex() == 0) {
-			departmentCombo.setBackground(new Color(255, 150, 150));
+			setRedBackgroundCombo(departmentCombo);
 			valid = false;
 		}// end if
 		try {// try to get values from text field
 			Double.parseDouble(salaryField.getText());
 			// check if salary is greater than 0
 			if (Double.parseDouble(salaryField.getText()) < 0) {
-				salaryField.setBackground(new Color(255, 150, 150));
+				setRedBackgroundText(salaryField);
 				valid = false;
 			}// end if
 		}// end try
 		catch (NumberFormatException num) {
-			salaryField.setBackground(new Color(255, 150, 150));
+			setRedBackgroundText(salaryField);
 			valid = false;
 		}// end catch
 		if (fullTimeCombo.getSelectedIndex() == 0) {
-			fullTimeCombo.setBackground(new Color(255, 150, 150));
+			setRedBackgroundCombo(fullTimeCombo);
 			valid = false;
 		}// end if
 		return valid;
 	}// end checkInput
+	
+	private void setRedBackgroundText(JTextField textField) {
+		textField.setBackground(new Color(255, 150, 150));
+	}
+	
+	private void setRedBackgroundCombo(JComboBox comboBox) {
+		comboBox.setBackground(new Color(255, 150, 150));
+	}
 
 	// set text field to white colour
 	public void setToWhite() {
